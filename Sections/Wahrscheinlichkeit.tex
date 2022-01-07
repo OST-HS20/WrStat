@@ -1,0 +1,67 @@
+\section{Wahrscheinlichkeit}
+\subsection{Wahrscheinlichkeitsdichte}
+\todo{Woche 6: Prüfungs aufgabe: Wahrscheinlichkeitsdichte muss 1 sein, Paramter anpassen.}
+Die Wahrscheinlichkeitsdichte muss den Flächeninhalt $1$ haben.
+\[
+\int_{-\infty}^{\infty}\varphi(x)dx = 1
+\]
+
+\subsection{Verteilungsfunktion}
+Die Verteilungsfunktion ist die Stammfunktion von der Wahrscheinlichkeitsdichte.
+\todo{Woche 6}
+
+
+\subsubsection{Gamma-Verteilung}
+\todo{Woche 6}
+\[
+\gamma_{\alpha,v}(x) = \frac{1}{\Gamma(v)\alpha^vx^{v-1}e^{\alpha x}}
+\]
+
+\subsubsection{Normalverteilung}
+\todo{Woche 8}
+Summe vieler kleiner Einflüsse wie Messwerte oder wiederholte Experimente. Zwei Drittel aller Werte liegen innerhalb einer Standardabweichung $\sigma$ um den Erwartungswert $\mu$. Diese Verteilung wird verwendet, wenn $P$ irgendwo in der mitte liegt, für seltene (kleine $P$) kann die Piossonverteilung verwendet werden.
+\[
+\varphi(x, \mu) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+\]
+
+\subsubsection{Rechenregeln}
+\textbf{Linearität} und \textbf{Summensatz}
+\todo{Beispiel von Woche 8 20:30min, oder Tabelle}
+
+\subsubsection{Exponentialverteilung}
+\todo{Woche 7}
+Gedächnislose Prozesse wie Radioaktiver Zerfall oder Warteschlangen.
+\[\varphi(x) = \begin{cases*}
+	ae^{-ax} \qquad x \geq 0 \\
+	0 \qquad \text{sonst}
+\end{cases*}\]
+Parameter:$a. \frac{1}{a}$ = Mean Time between Failure
+
+\textbf{Halbwertszeit}
+Die Halbwertszeit ist auch der Median welcher durch 
+\[
+\med T = \frac{1}{a}\ln2
+\]
+bestimmt ist.
+
+\subsubsection{Poissonverteilung}
+Gedächnislose Prozesse $T_i$ mit gleichem $a$. Wobei $k$ die Anzahl der Prozesse und $\lambda = al$ mit $l$ der Länge auf dem Intervall ist. $\lambda$ kann auch eine Rate sein. Dies sollte nur verwendet werden, wenn $n$ gross und $P$ selten ist.
+\[
+P_k(\lambda) = e^{-\lambda}\frac{\lambda^k}{k!}
+\]
+
+
+\subsection{Binomialverteilung}
+\todo{Woche 9}
+\[
+P(X = k) = \begin{pmatrix}	n \\ k \end{pmatrix} p^k(1-p)^{n-k}
+\]
+
+\subsection{Hypergeometrische Verteilung}
+Von $N$ Objekten sind $M$ markiert. Daraus werden $n$ Objekte zufällig ausgewählt.
+\[
+P(X=m) = \frac{\begin{pmatrix}	M \\ m\end{pmatrix}\begin{pmatrix}	N-M \\ n-m\end{pmatrix}}{\begin{pmatrix} N \\ N\end{pmatrix}}
+\]
+
+\subsection{$\chi^2$-Verteilung}
+Siehe \ref{chi-verteilung}

@@ -1,0 +1,123 @@
+\section{Kombinatorik}
+
+\subsection{Permutation}
+Auf wieviele Arten kann man $n$ Objekte anordnen?
+
+\[
+P_n = n! = n \cdot P_{n-1}
+\]
+
+\subsection{Kombination}
+Auf wieviele Arten kann man $k$ Objekte aus $n$ auswählen? \textit{Ziehen ohne Zurücklegen}
+
+\begin{align*}
+	C_k^n = \frac{n!}{k!(n-k)!} &= \overbrace{\begin{pmatrix}	n \\ k \end{pmatrix}}^\text{Binomialkoeffizieten} \\ \\
+	&=  \begin{pmatrix}	n - 1 \\ k -1\end{pmatrix} +  \begin{pmatrix}	n -1\\ k \end{pmatrix} \\
+	&= \frac{n}{k} \cdot  \begin{pmatrix}	n - 1 \\ k -1\end{pmatrix}
+\end{align*}
+
+
+\subsection{Erzeugende Funktionen}
+Idee ist, durch eine Potenzreihe kominatorische Probleme mit algebraischen Manipulationen zu lösen.\\
+\textbf{Beispiel:}\\
+\includegraphics[width=\columnwidth]{Images/erzeugendeFunktion}
+
+
+\subsection{Ereignisse}
+
+\includegraphics[width=\linewidth]{Images/zählregeln}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{l|l}
+		Alle Versuchsausgänge & $\Omega$ \\
+		A und B treten ein & $A \cap B$ \\
+		A oder B treten ein & $A \cup B$ \\
+		nicht A & $\overline{A} = \Omega \backslash A$
+	\end{tabular}
+\end{table}
+
+\textbf{Wahrscheinlichkeit der Ereignisse}:\\
+\begin{align*}
+	P(A) &= \frac{\left|A\right|}{\left|\Omega\right|}\\
+	P(\overline{A}) &= P(\Omega \backslash A) = 1 - P(A) \\
+	P(A \backslash B) &= P(A) - P(A \cap B) \\
+	P(A \cup B) &= P(A)  + P(B) - P(A \cap B) \\
+	P(\overline{A} | \overline{B}) &= 1-P(A|\overline{B}) \\
+\end{align*}
+
+
+\textbf{Beispiel:} Unfaire Münze
+\todo{\href{https://www.youtube.com/watch?v=_i7cu_-2st0}{Youtube}}
+\[P(A_k) = p^{k-1}(1-p)\]
+
+
+\subsection{Bedingte Wahrscheinlichkeit}
+Wahrscheinlichkeit für A, wenn B bereits eingetreten ist:
+\[
+P(A|B) = \frac{P(A \cap B)}{P(B)} \xRightarrow[\text{S.v. Bayes}]{} P(A|B) = P(B|A)\frac{P(A)}{P(B)}
+\]
+
+\begin{center}
+	\includegraphics[width=0.5\columnwidth]{Images/bedingte_wahr.}
+\end{center}
+
+\subsection{Totale Wahrscheinlichkeit}
+\[
+P(A) = \sum_{n=0}^{m}P(A|B_n)\cdot P(B_n)
+\]
+
+\begin{align*}
+	P(A) &=P(A|B)P(B) + P(T|\overline{B})P(\overline{B}) \\
+	&= P(A|B)P(B) + (1 - P(\overline{A}|\overline{B}))P(\overline{B})
+\end{align*}
+
+
+\subsection{Erwartungswert}
+Der Erwartungswert $\mu$ einer Zufallsvariable beschreibt die Zahl, die die diese im Mittel annimmt.
+\[
+\mu = E(X)= \sum\limits_{i=0}^{n}x_i\cdot \underbrace{P(X=x_i)}_\text{Wr.keit} = \int_{-\infty}^{\infty}x\cdot \varphi(x)dx
+\]
+
+\textbf{Rechenregeln} mit Zufallsvariablen $X, Y$:
+\begin{itemize}[nosep]
+	\item $E(X + Y) = E(X) + E(Y)$
+	\item $E(\lambda X) = \lambda E(X)$ 
+	\item $E(X\cdot Y) = E(X) \cdot E(Y) \qquad$  (Nur falls Unabhängig)
+\end{itemize}
+
+\subsection{Varianz}
+Die Varianz $\var(X)$ beschreibt die mittlere quadratische Abweichung vom Erwartungswert. Damit lässt sich die Standardabweichung $\sigma$ berechnen.
+\begin{align*}
+	\var(X) &= E(X^2) - E(X)^2 \\
+	&=\sum\limits_{i=0}^{n}(k_i - E(X))^2 \cdot \underbrace{P(X=x_i)}_\text{Wr.keit} \\
+	\sigma &= \sqrt{\var(X)}	
+\end{align*}
+
+\noindent\textbf{Beispiel} Faire Münze:\\
+$P(X = \overbrace{0}^{k_1}) = \frac{1}{2}$, Kopf: $P(X = \overbrace{1}^{k_2}) = \frac{1}{2}$ und der Erwartungswert $E(X)$: 
+\begin{align*}
+	E(X) &= 0\cdot \frac{1}{2} + 1\cdot\frac{1}{2} = \frac{1}{2} \\
+	E(X^2) &= 0^2\cdot \frac{1}{2} + 1^2\cdot\frac{1}{2} = \frac{1}{2}
+\end{align*}
+
+\noindent Die Varianz kann auf zwei Arten berechnet werden:\\
+\textit{Option1:} $\var(X) = (0 - \frac{1}{2})^2 \cdot \frac{1}{2} + (1 - \frac{1}{2})^2 \cdot 1 \xrightarrow{} \frac{1}{4}$\\
+\textit{Option2:} $\var(X) = E(X^2) - E(X)^2 = \frac{1}{2} - \frac{1}{4} \rightarrow \frac{1}{4}$
+\\ ~\\
+\noindent\textbf{Rechenregeln}:
+\begin{itemize}[nosep]
+	\item $\var(\lambda X) = \lambda^2\var(X)$
+	\item $\var(X + Y) = \var(X) + \var(Y) \qquad$ (Nur falls Unabhängig)
+	\item $\var(X\cdot Y) = \var(X)\var(Y) + \var(Y)E(X)^2 + \var(X)E(Y)^2$
+\end{itemize}
+
+\subsection{Kovarianz}
+Eine positive Kovarianz gibt an, dass sich beide Variablen in dieselbe Richtung bewegung und dual. Werte nahe oder gleich Null, deuten darauf hin, dass die Zufallsvariablen unabhängig sind.
+
+Die Kovarianz zwischen Zufallszahl $x,y$ mit Mittelwerten $\overline{x}, \overline{y}$ wird wie folgt berechnet. Siehe auch Kapitel \ref{covarianz_eg} als Beispiel:
+
+\[
+\cov(x,y) = \frac{\sum\limits_{i=1}^{N}(x_i - \overline{x})(y_i - \overline{y})}{N-1}
+\]
+

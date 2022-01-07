@@ -1,0 +1,50 @@
+\section{Regression}
+\subsection{Least Square}
+Findet eine Gerade welche die Varianz, Quadratischer Abstand von Gerade, minimiert. 
+\begin{center}
+	\begin{minipage}{0.20\textwidth}
+		\begin{center}
+			\includegraphics[width=\linewidth,keepaspectratio=true]{Images/leastsquare}\\
+		\end{center}
+	\end{minipage}%%% to prevent a space
+	\begin{minipage}{0.3\textwidth}
+		\[\textcolor{red}{\vec{x}} = (A^TA)^{-1}A^T\vec{b}\]
+	\end{minipage}
+\end{center}
+
+\noindent
+Beispiel für \textbf{nicht Lineares System} ($b\neq0$): $y_i = \textcolor{red}{a}x_i + \textcolor{red}{b}$.
+\[
+\underbrace{\begin{pmatrix}
+		x_1 & 1 \\
+		x_2 & 1 \\
+		\vdots & \vdots \\
+		x_n & 1
+\end{pmatrix}}_{\scriptsize{A}}
+\cdot
+\underbrace{\begin{pmatrix}
+		\textcolor{red}{a} \\
+		\textcolor{red}{b}
+\end{pmatrix}}_{\scriptsize{\textcolor{red}{\vec{x}}}}
+=
+\underbrace{\begin{pmatrix}
+		y_1 \\
+		y_2 \\
+		\vdots \\
+		y_n
+\end{pmatrix}}_{\scriptsize{\vec{b}}}
+\]
+
+\todo{Woche 6, 19.10.21}
+Regressionskoeffizient beschreibt wie gut eine Regression ist:
+\[
+\frac{\var(Y-aX-B)}{\var(Y)} = 1 - \frac{\cov(X, Y)^2}{\var(X)\var(Y)} = 1 - r^2
+\]
+
+
+\includegraphics[width=\linewidth]{Images/regressionskoeffizient}
+
+\label{covarianz_eg}
+\todo{Beispiel für\\
+	\includegraphics[width=\columnwidth]{Images/screenshot001}
+}
