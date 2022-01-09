@@ -1,4 +1,18 @@
 \section{Regression}
+\subsection{Regressionskoeffizient}\script{76}
+Regressionskoeffizient beschreibt wie gut eine Regression ist:
+\[
+\frac{\var(Y-aX-B)}{\var(Y)} = 1 - \underbrace{\frac{\cov(X, Y)^2}{\var(X)\var(Y)}}_{r^2}
+\]
+Regression wird besser, wenn $r^2$ nahe bei $1$ ist, also $r$ nahe $\pm 1$~\\
+\includegraphics[width=0.9\linewidth]{Images/regressionskoeffizient}
+
+Die Regressionsgerade $y = ax + b$ kann durch Least Square oder mit folgenden Formelen gefunden werden:
+\[
+a = \frac{\cov(X, Y)}{\var(X)} \qquad b = E(Y) - aE(X)
+\]
+\noindent\textbf{Beispiel} Siehe Kapitel \ref{regression}
+
 \subsection{Least Square}
 Findet eine Gerade welche die Varianz, Quadratischer Abstand von Gerade, minimiert. 
 \begin{center}
@@ -34,17 +48,3 @@ Beispiel für \textbf{nicht Lineares System} ($b\neq0$): $y_i = \textcolor{red}{
 		y_n
 \end{pmatrix}}_{\scriptsize{\vec{b}}}
 \]
-
-\todo{Woche 6, 19.10.21}
-Regressionskoeffizient beschreibt wie gut eine Regression ist:
-\[
-\frac{\var(Y-aX-B)}{\var(Y)} = 1 - \frac{\cov(X, Y)^2}{\var(X)\var(Y)} = 1 - r^2
-\]
-
-
-\includegraphics[width=\linewidth]{Images/regressionskoeffizient}
-
-\label{covarianz_eg}
-\todo{Beispiel für\\
-	\includegraphics[width=\columnwidth]{Images/screenshot001}
-}

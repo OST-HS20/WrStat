@@ -1,13 +1,19 @@
 \section{Kombinatorik}
 
-\subsection{Permutation}
+\subsection{Produkt}\script{6}
+Mit der \textit{Für-jedes-gibt-es-Regel} können $k$ Positionen unabhängig coneinander markiert werden, wobei -n- verschiedene Markierungen zur Verfügung stehen.
+\[
+P_N = n^k
+\]
+
+\subsection{Permutation}\script{7}
 Auf wieviele Arten kann man $n$ Objekte anordnen?
 
 \[
 P_n = n! = n \cdot P_{n-1}
 \]
 
-\subsection{Kombination}
+\subsection{Kombination}\script{8}
 Auf wieviele Arten kann man $k$ Objekte aus $n$ auswählen? \textit{Ziehen ohne Zurücklegen}
 
 \begin{align*}
@@ -17,15 +23,16 @@ Auf wieviele Arten kann man $k$ Objekte aus $n$ auswählen? \textit{Ziehen ohne 
 \end{align*}
 
 
-\subsection{Erzeugende Funktionen}
+\subsection{Erzeugende Funktionen}\script{12}
 Idee ist, durch eine Potenzreihe kominatorische Probleme mit algebraischen Manipulationen zu lösen.\\
 \textbf{Beispiel:}\\
 \includegraphics[width=\columnwidth]{Images/erzeugendeFunktion}
 
 
 \subsection{Ereignisse}
-
-\includegraphics[width=\linewidth]{Images/zählregeln}
+\begin{center}
+	\includegraphics[width=0.7\columnwidth]{Images/zählregeln}
+\end{center}
 
 \begin{table}[H]
 	\centering
@@ -33,34 +40,39 @@ Idee ist, durch eine Potenzreihe kominatorische Probleme mit algebraischen Manip
 		Alle Versuchsausgänge & $\Omega$ \\
 		A und B treten ein & $A \cap B$ \\
 		A oder B treten ein & $A \cup B$ \\
-		nicht A & $\overline{A} = \Omega \backslash A$
+		nicht A & $\overline{A} = \Omega \backslash A$ \\
+		unmögliches Ereignis & $\emptyset$ \\
+		A hat B zurfolge & $A \subset B$ \\
 	\end{tabular}
 \end{table}
+\noindent\textbf{Beispiel:} Unfaire Münze $A_k$ erster Kopf im k-ten Wurf mit Anzahl würfeln bis Kopf kommt. Da gewürfelt wird, bis Kopf kommt, ist die Summe aller Wahrscheinlichkeiten $\sum\limits_{k}P(A_k) = 1$.
+\[P(A_k) =\underbrace{ p^{k-1}}_{k-1\text{ Würfe ohne Kopf}}\cdot \underbrace{(1-p)}_{\text{k-ter Wurf}}\]
 
-\textbf{Wahrscheinlichkeit der Ereignisse}:\\
+
+\textbf{Axiome}:\script{34}\\
 \begin{align*}
-	P(A) &= \frac{\left|A\right|}{\left|\Omega\right|}\\
+	P(\emptyset) &= 0 \\
 	P(\overline{A}) &= P(\Omega \backslash A) = 1 - P(A) \\
 	P(A \backslash B) &= P(A) - P(A \cap B) \\
 	P(A \cup B) &= P(A)  + P(B) - P(A \cap B) \\
 	P(\overline{A} | \overline{B}) &= 1-P(A|\overline{B}) \\
 \end{align*}
 
-
-\textbf{Beispiel:} Unfaire Münze
-\todo{\href{https://www.youtube.com/watch?v=_i7cu_-2st0}{Youtube}}
-\[P(A_k) = p^{k-1}(1-p)\]
-
-
-\subsection{Bedingte Wahrscheinlichkeit}
-Wahrscheinlichkeit für A, wenn B bereits eingetreten ist:
+\subsection{Bedingte Wahrscheinlichkeit}\script{39}
+Die bedingte Wahrscheinlichkeit eines Ereignisses A unter der Bedingung B:
 \[
-P(A|B) = \frac{P(A \cap B)}{P(B)} \xRightarrow[\text{S.v. Bayes}]{} P(A|B) = P(B|A)\frac{P(A)}{P(B)}
+P(A|B) = \frac{P(A \cap B)}{P(B)} \xRightarrow[\text{S.v. Bayes}]{} P(A|B) = P(B|A)\cdot\frac{P(A)}{P(B)}
 \]
+
+\noindent\textbf{Beispiel:} Die Wahrscheinlichkeit, dass ein Raucher (R) Lungenkrebs (L) einwickelt ist $15\%$, Bei Nichtraucher $1\% \rightarrow P(L|R) = 0.15$ und $P(L|\overline{R}) = 0.01$. Wie viel Lungenkrebskrange sind auch Raucher ist unbekannt $P(R|L) = ?$.
 
 \begin{center}
 	\includegraphics[width=0.5\columnwidth]{Images/bedingte_wahr.}
 \end{center}
+
+\noindent Wenn A und B unabhängig sind gilt:
+\[ P(A \cap B) = P(A) \cdot P(B)\]
+
 
 \subsection{Totale Wahrscheinlichkeit}
 \[
@@ -73,10 +85,10 @@ P(A) = \sum_{n=0}^{m}P(A|B_n)\cdot P(B_n)
 \end{align*}
 
 
-\subsection{Erwartungswert}
+\subsection{Erwartungswert}\script{60}
 Der Erwartungswert $\mu$ einer Zufallsvariable beschreibt die Zahl, die die diese im Mittel annimmt.
 \[
-\mu = E(X)= \sum\limits_{i=0}^{n}x_i\cdot \underbrace{P(X=x_i)}_\text{Wr.keit} = \int_{-\infty}^{\infty}x\cdot \varphi(x)dx
+\mu = \overline{X} = E(X)= \sum\limits_{i=0}^{n}x_i\cdot \underbrace{P(X=x_i)}_\text{Wr.keit} = \int_{-\infty}^{\infty}x\cdot \underbrace{\varphi(x)}_{\text{Wr.dichte}}dx
 \]
 
 \textbf{Rechenregeln} mit Zufallsvariablen $X, Y$:
@@ -86,7 +98,7 @@ Der Erwartungswert $\mu$ einer Zufallsvariable beschreibt die Zahl, die die dies
 	\item $E(X\cdot Y) = E(X) \cdot E(Y) \qquad$  (Nur falls Unabhängig)
 \end{itemize}
 
-\subsection{Varianz}
+\subsection{Varianz}\script{66}
 Die Varianz $\var(X)$ beschreibt die mittlere quadratische Abweichung vom Erwartungswert. Damit lässt sich die Standardabweichung $\sigma$ berechnen.
 \begin{align*}
 	\var(X) &= E(X^2) - E(X)^2 \\
@@ -118,6 +130,6 @@ Eine positive Kovarianz gibt an, dass sich beide Variablen in dieselbe Richtung 
 Die Kovarianz zwischen Zufallszahl $x,y$ mit Mittelwerten $\overline{x}, \overline{y}$ wird wie folgt berechnet. Siehe auch Kapitel \ref{covarianz_eg} als Beispiel:
 
 \[
-\cov(x,y) = \frac{\sum\limits_{i=1}^{N}(x_i - \overline{x})(y_i - \overline{y})}{N-1}
+\cov(x,y) = \frac{\sum\limits_{i=1}^{N}(x_i - \overline{x})(y_i - \overline{y})}{N} = E(xy) - E(x)\cdot E(y)
 \]
 

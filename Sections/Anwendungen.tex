@@ -1,18 +1,58 @@
 \section{Anwendungen}
-\subsection{HIV}
+\subsection{Totale und Bedingte Wahrscheinlichkeit - HIV}
 \includegraphics[width=\linewidth]{Images/HIV}
 
-\subsection{Markov-Kette}
-\todo{Woche 3}
+\subsection{Wahrscheinlichkeitsdichte}
+\todo{Woche 6: Prüfungsaufgabe: Wahrscheinlichkeitsdichte muss 1 sein, Paramter anpassen.}
+
+\subsection{Binomialverteilung Approximation}
+\subsubsection{Normalverteilung}\label{approx_normal}
+\todo{Beispiel Prüfung 2020 Aufgabe 6.} 
+
+\subsubsection{Poissionverteilung}\label{approx_poission}
+\todo{Beispiel Prüfung 2020 Aufgabe 6.} 
+
+\subsection{Schätzen}\label{konf_intervall}
+\todo{Beispiel Prüfung 2020\\
+	\includegraphics[width=\columnwidth]{Images/screenshot001}
+}
 
 
-\subsection{Linear Regression}
-\todo{Woche 5}
-\includegraphics[width=\linewidth]{Images/linear_regression1}
-\includegraphics[width=\linewidth]{Images/linear_regression}
+\subsection{Linear Regression}\label{covarianz_eg}\label{regression}
+Eine Regression bewerten. Die Geradenkoeffizienten $ a= 0.6278, b = 7.385$ wurden mit LeastSquare gefunden.
+\begin{center}
+	\includegraphics[width=0.5\columnwidth]{Images/regression}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{l|rr|rr|r}
+		$j$ & $t_j$ & $t^2_j$ & $x_i$ & $x_i^2$ & $t_jx_j$ \\ \toprule
+		1 & 6 & 36 & 10.98 & 120.6 & 65.88 \\  \midrule
+		2 & 10 & 100 & 13.89 & 192.9 & 138.9 \\  \midrule
+		3 & 14 & 196 & 16.23 & 263.4 & 227.2\\  \midrule
+		4 & 18 & 324 & 18.57 & 344.8 & 334.3 \\  \bottomrule
+		$\sum$  & 48 & 656 &  59.67 & 921.74 & 766.26\
+	\end{tabular}
+\end{center}
+
+\noindent Daraus lassen sich folgende Werte bestimmen:
+\begin{align*}
+	E(t) &= 12 \qquad E(t^2) = 164  \\
+	E(x) &= 14.91 \qquad E(x)^2 = 230.44  \\
+	\cov(T, X) &= E(tx) - E(x)E(t) = 191.56 - (14.91 \cdot 12) = 12.56 \\
+	\var(t) &= E(t^2) - E(t)^2 = 164 - 144 = 20 \\
+	\var(x) &= E(x^2) - E(x)^2 = 230.4 - 222.3 = 8.129 \\
+	r^2 &= \frac{\cov(t, x)^2}{\var(t)\var(x)} = \frac{12.56^2}{20\cdot 8.129} = 0.9695
+\end{align*}
+
+\noindent Der Wert liegt nahe bei $1$, daher eine recht gute Regression.
 
 \subsection{Hypergeometrische Verteilung}
-\includegraphics[width=\columnwidth]{Images/hyergeom.verteilung}
+In einer Kiste mit 20 Äpfeln sind 5 wurmstichig. Wie gross ist die Wahrscheinlichkeit, in einer Stichprobe von 8 Äpfeln 2 wurmstichige zu funden? $N= 20, M = 5, n = 8, m = 2$
+\[
+P(X= 2) = \frac{\begin{pmatrix} 5 \\ 2 \end{pmatrix}\begin{pmatrix} 15 \\ 6 \end{pmatrix}}{\begin{pmatrix} 20 \\ 8 \end{pmatrix}} = 0.3973
+\]
+
 
 \subsection{Testen einer Verteilung}
 \subsubsection{$\chi^2$-Test}\label{tictac}
@@ -41,7 +81,7 @@ $n_i - np_i$: Abweichungen, \\
 $(n_i - np_i)^2/np_i$: Diskrepanz
 
 \subsubsection{Kolmogorov-Smirnof Test}\label{Kolmogorov}
-Generiert ein Zufallsgenerator im Intervall $[0, 1]$ mit $\alpha=0.01$ eine gleichverteilte Zufallszahl? Damit ist in diesem Beispiel $F(x) = x$ (Lineare Verteilung) und $n$ die Anzahl Werte und $j$ der entsprechender sortierte Eintrag ist.
+Generiert ein Zufallsgenerator im Intervall $[0, 1]$ mit $\alpha=0.01$ eine gleichverteilte Zufallszahl $x_j$? Damit ist in diesem Beispiel $F(x) = x$ (Lineare Verteilung) und $n$ die Anzahl Werte und $j$ der entsprechender sortierte Eintrag ist.
 \begin{center}
 	\begin{tabular}{l|r|r|r}
 		$j$ & $x_j$ & $\frac{i}{n}-F(x_j)$ & $F(x_j) - \frac{i-1}{n}$ \\ \toprule
@@ -93,3 +133,6 @@ und anschliessend $\sigma$ berechnen
 \sigma = \sqrt{\var(X)} = \sqrt{\frac{\sigma_1^2\sigma_2^2}{\sigma_1^2+\sigma_2^2}} = \sqrt{\frac{0.022^2\cdot 0.024^2}{0.022^2 + 0.024^2}} = 0.016
 \]  
 Man kann also den Fehler von $0.022g$ auf $0.016g$ reduzieren, eine Reduktion um $27\%$.
+
+\subsection{Kalman-Filter}
+\todo{Prüfung 2018 Aufgabe 8.}

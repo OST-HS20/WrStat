@@ -22,8 +22,10 @@ Die Nullhypothese $H_0$ und die Alternativhypothese $H_1$ sind gegensätzlich, w
 \end{tabular}
 \end{center}
 
-\subsection{t-Test}
-Die Stichproben $X_1...X_n$ und $Y_1...Y_n$ mit gleicher Varianz haben den gleichen Erwartungswert. Die Teststatistik ergibt sich aus der t-verteilt mit $m+n-2$ Freiheitsgraden.
+\section{Testen einer Verteilung}
+
+\subsection{t-Test}\script{167}
+Wenn zB eine Verbesserung eines Produktes mit Stichproben $X_1...X_n$ mit $n$ Anzahl und Stichproben nach der Verbesserung $Y_1...Y_m$ und $m$ Anzahl durchgeführt wurden. Kann mit dem $t$-Test ausgewertet werden ob dies etwas gebracht hat. Übersteigt der $t$ Wert den Wert für die $1-\alpha$-Quantile der t-Verteilung \script{215} mit $m+n-2$ Freiheitsgraden, wrid die Hypothese verworfen.
 \[
 t = \frac{\overline{X} - \overline{Y}}{\sqrt{(n -1)S^2_X + (m -1)S^2_Y}}\sqrt{\frac{mn(n+m-2)}{n+3}}
 \]
@@ -33,36 +35,39 @@ Varianz muss geschätzt werden, analog auch für $Y$:
 \overline{X} = \frac{X_1 + \dots + X_n}{n}, \qquad S^2_X = \frac{1}{n-1}\sum_{i=1}^{n}(X_i - \overline{X})^2
 \]
 
+\begin{center}
+	\includegraphics[width=0.8\columnwidth]{Images/t-tabelle}
+\end{center}
 
-\includegraphics[width=\columnwidth]{Images/t-tabelle}
-
-
-\section{Testen einer Verteilung}
 \subsection{$\chi^2$ Test}
-\todo{Woche 12}
 Um eine diskrete Verteilung $P(X = x_i) = p_i$ mit $n_i$ Beobachtungen zu testen wird die Nullhypothese $H_0$ (Siehe Kapitel \ref{nullhypothese}) überprüft. Die Diskrepanz $D$ wird dabei wie folgt berechnet:
 \[
 D = \sum_{i=1}^{k}\frac{(n_i - np_i)^2}{np_i}
 \]
 Anschliessend wird die $\chi^2$-Verteilung mit $k-1$ Freiheitsgraden berechnet. Die benötigten Parameter können via Schätzung (Siehe Kapitel \ref{schaetzen}) oder Messung bestimmt werden. Damit lässt sich der kritische Wert $D_\text{krit}$ aus der $\chi^2$-Tabelle bestimmen. $H_0$ wird verworfen, wenn $D > D_\text{krit}$ ist.
 
+\noindent\textbf{Beispiel}: Siehe Kapitel \ref{tictac}
 \subsubsection{$\chi^2$ Tabelle}
-Achtung: $\alpha = 1 - p_i$\\
-\includegraphics[width=\columnwidth]{Images/chi-tabelle}
-
-\subsubsection{$\chi^2$ Verteilung}\label{chi-verteilung}
-Wenn Diskrepanz\\
-$D>D_+ \Rightarrow$ Daten passen nicht ($H_0$ verwerfen)\\
-$D < D_- \Rightarrow$ Daten passen zu gut (Hinweis auf Betrug)
+Achtung: $\alpha = 1 - p_i$
 \begin{center}
-	\includegraphics[width=0.6\columnwidth]{Images/chi-verteilung}
+	\includegraphics[width=\columnwidth]{Images/chi-tabelle}
 \end{center}
 
-\noindent\textbf{Beispiel}: Siehe Kapitel \ref{tictac}
-\\
+\subsubsection{$\chi^2$ Verteilung}\label{chi-verteilung}
+
+\begin{center}
+	\begin{minipage}{0.20\textwidth}
+		\includegraphics[width=0.9\columnwidth]{Images/chi-verteilung}
+	\end{minipage}%%% to prevent a space
+	\begin{minipage}{0.3\textwidth}
+		 Wenn Diskrepanz: \\
+		 $D>D_+ \Rightarrow$ Daten passen nicht ($H_0$ verwerfen)\\
+		 $D < D_- \Rightarrow$ Daten passen zu gut (Hinweis auf Betrug)
+	\end{minipage}
+\end{center}
 \noindent\textbf{ACHTUNG}: Wenn nur wenige Messungen am Anfang bzw Ende $<5$ der Verteilung vorliegen, sollte der Kolmogorov-Smirnov-Test verwendet werden.
 \begin{center}
-	\includegraphics[width=0.4\columnwidth]{Images/chi-verteilung-fail}
+	\includegraphics[width=0.6\columnwidth]{Images/chi-verteilung-fail}
 \end{center}
 
 \subsection{Kolmogorov-Smirnov-Test}
@@ -73,8 +78,10 @@ Um eine stetige Verteilung zu testen kann der Kolmogorov-Smirnov-Test verwendet 
 	K_n^- &= \sqrt{n}\max\left(F(x_j) - \frac{j-1}{n}\right) \\
 \end{align*}
 
-\textbf{Beispiel:} Siehe Kapitel \ref{Kolmogorov}
+~\\
+Achtung: $\alpha = 1 - p_i$
+\begin{center}
+	\includegraphics[width=\columnwidth]{Images/ktabelle}
+\end{center}
 
-\subsubsection{K-Tabelle}
-Achtung: $\alpha = 1 - p_i$\\
-\includegraphics[width=\columnwidth]{Images/ktabelle}
+\noindent\textbf{Beispiel:} Siehe Kapitel \ref{Kolmogorov}
