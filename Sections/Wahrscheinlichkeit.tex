@@ -1,16 +1,17 @@
 \section{Wahrscheinlichkeit}
 \subsection{Wahrscheinlichkeitsdichte}
-
-Die Wahrscheinlichkeitsdichte muss den Flächeninhalt $1$ haben.
+Die Fläche zwischen einem Punkt $a$ und $b$ zeigt die Wahrscheinlichkeit an. Nicht der Wert von der Wahrscheinlichkeitsdichtefunktion ist somit relevant, sondern die Fläche unter ihrm Graphen. Die Wahrscheinlichkeitsdichte muss daher auch den Flächeninhalt $1$ haben. 
 \[
 \int_{-\infty}^{\infty}\varphi(x)dx = 1
 \]
+Siehe \textbf{Beispiel} Kapitel \ref{wdichte}.
 
 \subsection{Verteilungsfunktion}\script{83}
-Die Verteilungsfunktion $F$ ist die Stammfunktion von der Wahrscheinlichkeitsdichte.
+Die Verteilungsfunktion $F$ gibt an, mit welcher Wahrscheinlichkeit das Ergebnis des Zufallsexperiments kleiner oder gleich eines bestimmten Wertes ist. Dafür werden alle Ergebnisse bis zu diesem Wert summiert. 
 \[
 \varphi(x) = F'(x)
 \]
+$F$ ist die Stammfunktion von der Wahrscheinlichkeitsdichte $\varphi$.
 
 \subsubsection{Gleichverteilung}\script{101}
 Gleichverteilung liegt zB vor wenn Zufallszahlen  in einem Intervall von $[a, b]$ gleichverteilt sind. Jede Zahl sollte gleich Wahrscheinlich vorkommen. Der Erwartungswert kann einfach durch $E(X) = \frac{a + b}{2}$ bestimmt werden. für Varianz gilt $\var(x) = \frac{(b-a)^2}{12}$
@@ -53,6 +54,7 @@ Gedächnislose Prozesse $T_i$ mit gleichem $a$. Wobei $k$ die Anzahl der Prozess
 \[
 P_k(\lambda) = e^{-\lambda}\frac{\lambda^k}{k!}
 \]
+\noindent\textbf{Beispiel:} Siehe Kapitel \ref{approx_poission}
 
 \subsection{Binomialverteilung}
 Zufallsexperiment mit zwei möglichen Ausgängen $A$ oder $\overline{A}$ zB Lotto, Wahrscheinlichkeit $p = P(A)$. $X$ = Anzahl Eintreten von $A$ in $n$ unabhängigen Durchführungen. Der Erwartungswert kann auch durch $E(X) = np$ und die Varianz $\var(X) = np(1 - p)$ berechnet werden.

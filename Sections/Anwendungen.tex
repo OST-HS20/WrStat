@@ -2,21 +2,59 @@
 \subsection{Totale und Bedingte Wahrscheinlichkeit - HIV}
 \includegraphics[width=\linewidth]{Images/HIV}
 
-\subsection{Wahrscheinlichkeitsdichte}
-\todo{Woche 6: Prüfungsaufgabe: Wahrscheinlichkeitsdichte muss 1 sein, Paramter anpassen.}
-
+\subsection{Wahrscheinlichkeitsdichte}\label{wdichte}
+Gegeb ist Funktion $\varphi(x) = \begin{cases}	a(\cosh 1 - \cosh x) & -1 \le x \le 1\, \\ 0 & \text{sonst}\end{cases}$. Dafür müssen Erwartungswert $\mu$ und Parameter $a$ bestimmt werden.
+\begin{center}
+	\includegraphics[width=0.6\columnwidth]{Images/wdichte}
+\end{center}
+\begin{align*}
+	\int\limits_{-\infty}^{\infty}\varphi(x)dx &= 1 \xrightarrow{} a\cdot\left[\overbrace{\int\limits_{-1}^{1}\cosh 1dx}^{\circledb{f}} - \overbrace{\int\limits_{-1}^{1}\cosh xdx}^{\circledb{g}}\right] = 1\\
+	\circledb{f:} \cosh 1\cdot\int\limits_{-1}^{1}dx &= 2\cdot\cosh(1)\\
+	\circledb{g:} \int\limits_{-1}^{1}\cosh xdx &= 2\cdot\sinh(1)\\
+	1 &= a\cdot \left(2\cdot \frac{e^1+e^{}-1}{2} - 2\cdot\frac{e^x-e^{-x}}{2}\right) \\
+	1 &= a \cdot\frac{2}{e} \\
+	a &= \frac{e}{2}
+\end{align*}
+Da die Funktion \textbf{gerade} ist, ist der Erwarutungswert $\mu = 0$
 \subsection{Binomialverteilung Approximation}
+Bei einer Umfrage sind $18\%$ der Meinung, die Mondlandung sei eine Verschwörung. Wie Gross ist die Wahrscheinlichkeit, dass in einer Stichprobe von 100 Menschen mehr als 20 finden lassen, die die Mondlandung für eine Verschwörung halten? Im Vergleich sind Flat Earther selten mit $1.28\%$
 \subsubsection{Normalverteilung}\label{approx_normal}
-\todo{Beispiel Prüfung 2020 Aufgabe 6.} 
+$X$ ist die Anzahl Mondlandungsverweigerer. $X$ ist Binomialverteilt mit $p=0.18$ und $n=100$. Daraus lässt sich $\mu=np = 18$ und $\sigma = \sqrt{np(1-p)} = 3.84187$ berechnen.
+\begin{align*}
+	P(X \gt 20) &= 1 - P(X \le 20) \\
+	P(X \le 20) &= P\left(\frac{X - \mu}{\sigma} \le \frac{20 + 0.5 - \mu}{\sigma}\right) = \Phi(0.6507) = 0.7424\\
+	P(X \gt 20) &\approxeq 1 - 0.7424 = 0.2576
+\end{align*}
 
 \subsubsection{Poissionverteilung}\label{approx_poission}
-\todo{Beispiel Prüfung 2020 Aufgabe 6.} 
+$X$ ist die Anzahl Flath Earthler. Die erwartet Anzahl ist daher $\lambda = np = 1.28$
+\begin{align*}
+	P(X \gt 2) &= 1 - P(X \le 2) = 1 - P(X =0) - P(X=1) - P(X=2) \\
+	&= 1-P_\lambda(0) -P_\lambda(1)-P_\lambda(2)\\
+	&= 1 - e^{-\lambda}\left(1 + \lambda + \frac{\lambda^2}{2}\right)\\
+	&= 1 - 0.86169 = 0.138307
+\end{align*}
 
 \subsection{Schätzen}\label{konf_intervall}
-\todo{Beispiel Prüfung 2020\\
-	\includegraphics[width=\columnwidth]{Images/screenshot001}
-}
-
+400 $1k\Omega$ Widerstände wurden ausgemessen. $\frac{1}{4} = 25\%$ hatten einen Wert von über $1000
+72\Omega$, $10\%$ nicht mehr als $997.9\Omega$. Wie gross ist der mittlere Widerstand und Standardabweichung dieser Reihe? \textit{Annahmem dass Widerstände normalverteilt sind.}
+\begin{align*}
+	P(X \le 1000.72) &= 1 - 0.25 = 0.75 \\
+	P(X \le 997.9) &= 0.1
+\end{align*}
+\begin{center}
+	\includegraphics[width=\columnwidth]{Images/schätzen}
+\end{center}
+Durch standardisierung und der Quantilentabelle aus Kapitel \ref{quantilentabelle} liest man heraus:
+\begin{align*}
+    P\left(\frac{X - \mu}{\sigma} \le \frac{1000.72 - \mu}{\sigma}\right) &= 0.75 & \xRightarrow[]{}	F(x_+) &= 0.6745 \\
+	P\left(\frac{X - \mu}{\sigma} \le \frac{997.9 - \mu}{\sigma}\right) &= 0.10 & \xRightarrow[]{}	F(x_-) &= -1.2816
+\end{align*}
+Was ein Gleichungssystem für $\mu$ und $\sigma$ ergibt. Somit sind $\mu=999.79$ und $\sigma = 1.44\Omega$
+\begin{align*}
+	1000.72 - \mu = 0.6745\sigma \\
+	997.9 - \mu = -1.2816\sigma
+\end{align*}
 
 \subsection{Linear Regression}\label{covarianz_eg}\label{regression}
 Eine Regression bewerten. Die Geradenkoeffizienten $ a= 0.6278, b = 7.385$ wurden mit LeastSquare gefunden.
@@ -80,6 +118,8 @@ $np_i$ Erwartete Anzahl,  \\
 $n_i - np_i$: Abweichungen, \\
 $(n_i - np_i)^2/np_i$: Diskrepanz
 
+Da $D < D_{krit}$ ist, gibt es keinen Grund an der Nullhypothese zu zweifeln.
+
 \subsubsection{Kolmogorov-Smirnof Test}\label{Kolmogorov}
 Generiert ein Zufallsgenerator im Intervall $[0, 1]$ mit $\alpha=0.01$ eine gleichverteilte Zufallszahl $x_j$? Damit ist in diesem Beispiel $F(x) = x$ (Lineare Verteilung) und $n$ die Anzahl Werte und $j$ der entsprechender sortierte Eintrag ist.
 \begin{center}
@@ -134,5 +174,16 @@ und anschliessend $\sigma$ berechnen
 \]  
 Man kann also den Fehler von $0.022g$ auf $0.016g$ reduzieren, eine Reduktion um $27\%$.
 
-\subsection{Kalman-Filter}
-\todo{Prüfung 2018 Aufgabe 8.}
+\subsection{Kalman-Filter}\label{kalman}
+Die Messgenauigkeit ist $\pm0.1^\circ C$ mit einer Tagsmitteltemperatur von $\pm10^\circ C$. Der Treibhauseffekt von $CO_2$ kann durch die Grösse $p$ beschrieben werden. In einem Zeitintervall $\Delta t$ nimmt die Temperatur
+um $p \cdot \Delta t$ zu. $p=0$ bedeutet, dass sich die Temperatur nicht verändert. $p$ kann nicht direkt gemessen werden, daher soll ein Kalman-Filter implementiert werden, welche $p$ aus dem Temperaturmessungen herausfiltert.
+
+Die Systemvariablen sind $T$ und $p$
+\[
+x_{k+1} = \begin{pmatrix}T_{k+1} \\ p_{k+1} \end{pmatrix} = \begin{pmatrix}T_{k} + p_{k}\Delta t \\ p_k \end{pmatrix} = \underbrace{\begin{pmatrix}1 & \Delta t \\ 0 & 1 \end{pmatrix}}_{\varphi}\begin{pmatrix}T_k \\ p_k \end{pmatrix}
+\]
+Da nur Temepratur gemessen wird, gilt $H = \begin{pmatrix} 1 & 0 \end{pmatrix}$. Bekannt ist ausserdem die Messgenauigkeit von $0.1K$, welche $R = \begin{pmatrix}0.01K^2\end{pmatrix}$ ergibt. Die Systemfehlerkovarianzmatrix muss folgende Form haben:
+\[
+Q = \begin{pmatrix}\sigma_T^2 & 0 \\ 0 & \sigma_p^2 \end{pmatrix}
+\]
+Für $\sigma_T^2$ könnten wir schätzen, dass wir in unserem Modell die Wetterentwicklung nicht modelliert haben, die Temperaturschwankungen müssen also im Systemfehler untergebracht werden. Damit ist $\sigma_T = 10K$. Leider sind keine Informationen über $\sigma_p$ bekannt.

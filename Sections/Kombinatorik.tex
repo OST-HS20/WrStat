@@ -56,10 +56,11 @@ Idee ist, durch eine Potenzreihe kominatorische Probleme mit algebraischen Manip
 	P(A \backslash B) &= P(A) - P(A \cap B) \\
 	P(A \cup B) &= P(A)  + P(B) - P(A \cap B) \\
 	P(\overline{A} | \overline{B}) &= 1-P(A|\overline{B}) \\
+	P(\overline{A} | B) &= 1-P(A|B) \\
 \end{align*}
 
 \subsection{Bedingte Wahrscheinlichkeit}\script{39}
-Die bedingte Wahrscheinlichkeit eines Ereignisses A unter der Bedingung B:
+Die bedingte Wahrscheinlichkeit eines Ereignisses A unter der Bedingung B. \textit{B ist die neue Gesammtmenge, in welcher A vorkommen kann}:
 \[
 P(A|B) = \frac{P(A \cap B)}{P(B)} \xRightarrow[\text{S.v. Bayes}]{} P(A|B) = P(B|A)\cdot\frac{P(A)}{P(B)}
 \]
