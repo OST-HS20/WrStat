@@ -9,7 +9,7 @@ Siehe \textbf{Beispiel} Kapitel \ref{wdichte}.
 \subsection{Verteilungsfunktion}\script{83}
 Die Verteilungsfunktion $F$ gibt an, mit welcher Wahrscheinlichkeit das Ergebnis des Zufallsexperiments kleiner oder gleich eines bestimmten Wertes ist. Dafür werden alle Ergebnisse bis zu diesem Wert summiert. 
 \[
-\varphi(x) = F'(x)
+\varphi(x) = F'(x) \xRightarrow[]{} \int_{-\infty}^{x}\varphi(\zeta)d\zeta = F_x(x)
 \]
 $F$ ist die Stammfunktion von der Wahrscheinlichkeitsdichte $\varphi$.
 
@@ -43,7 +43,7 @@ Summe vieler kleiner Einflüsse wie Messwerte oder wiederholte Experimente. Zwei
 \noindent Die Varianz ist zudem gegeben durch die Wendestellen bei $\mu \pm \sigma \rightarrow \var(x) = E(X^2) - E(X)^2 = \sigma^2E\left(\frac{(x - \mu)^2}{\sigma^2}\right)$
 
 \begin{center}
-	\includegraphics[width=0.6\columnwidth]{Images/normalverteilung}
+	\includegraphics[width=0.4\columnwidth]{Images/normalverteilung}
 \end{center}
 
 \noindent Wenn die Normalverteilung Standardisiert wurde, kann die Tabelle verwendet werden. $\Phi(-x) = 1 - \Phi(x)$:\\
@@ -67,7 +67,7 @@ P(X = k) = \underbrace{\begin{pmatrix}	n \\ k \end{pmatrix}}_{\text{Anzahl Auswa
 P (X = 7) = \begin{pmatrix}	10 \\ 7 \end{pmatrix} \frac{1}{6^7}\begin{pmatrix}	5 \\ 6 \end{pmatrix}^3 = 0.000248
 \]
 \subsubsection{Approximation Normalverteilung}
-Für grosse $n$ und eher grosse $p$ kann die Binomialverteilung auch mit der Standard- Normalverteilung approximiert werden. Damit werden $\mu = np$ und $\sigma = \sqrt{np(1-p)}$ standardisierte. 
+Für grosse $n$ und eher grosse $p$ kann die Binomialverteilung auch mit der Standard- Normalverteilung approximiert werden. Damit werden $\mu = np$ und $\sigma = \sqrt{np(1-p)}$ standardisierte. \textbf{Achtung:} für die Grenzen immer $\pm 0.5$ addieren, um Rundungsfehler zu minimieren.
 \begin{align*}
 	P(X \leq k) &\approx \Phi(\frac{k + 0.5 - \mu}{\sigma}) \\
 	P(l < X \leq k) &\approx \Phi(\frac{k + 0.5 - \mu}{\sigma})  - \Phi(\frac{k - 0.5 - \mu}{\sigma}) \\
@@ -75,7 +75,7 @@ Für grosse $n$ und eher grosse $p$ kann die Binomialverteilung auch mit der Sta
 \noindent\textbf{Beispiel:} Siehe Kapitel \ref{approx_normal}
 
 \subsubsection{Approximation Poissonverteilung}
-Für grosse $n$ und eher kleine $p$ kann die Binomialverteilung auch mit der Poissonverteilung approximiert werden. $\lambda = np$
+Für grosse $n$ und eher kleine $p$ wird die Binomialverteilung besser mit der Poissonverteilung approximiert. $\lambda = np$
 \[
 P_\lambda(k) = e^{-\lambda}\frac{\lambda^k}{k!}
 \]

@@ -27,9 +27,10 @@ $X$ ist die Anzahl Mondlandungsverweigerer. $X$ ist Binomialverteilt mit $p=0.18
 \end{align*}
 
 \subsubsection{Poissionverteilung}\label{approx_poission}
-$X$ ist die Anzahl Flath Earthler. Die erwartet Anzahl ist daher $\lambda = np = 1.28$
+$X$ ist die Anzahl Flath Earthler. Die erwartet Anzahl ist daher $\lambda = np = 1.28$. wie gross ist die Wahrscheinlichkeit von einer Stichprobe mit 100 Personen zwei davon zu Überzeugen, dass die Erde flach ist?
 \begin{align*}
-	P(X \gt 2) &= 1 - P(X \le 2) = 1 - P(X =0) - P(X=1) - P(X=2) \\
+	P(X \gt 2) &= 1 - P(X \le 2) \\
+	&= 1 - P(X =0) - P(X=1) - P(X=2) \\
 	&= 1-P_\lambda(0) -P_\lambda(1)-P_\lambda(2)\\
 	&= 1 - e^{-\lambda}\left(1 + \lambda + \frac{\lambda^2}{2}\right)\\
 	&= 1 - 0.86169 = 0.138307
@@ -124,16 +125,16 @@ Da $D < D_{krit}$ ist, gibt es keinen Grund an der Nullhypothese zu zweifeln.
 Generiert ein Zufallsgenerator im Intervall $[0, 1]$ mit $\alpha=0.01$ eine gleichverteilte Zufallszahl $x_j$? Damit ist in diesem Beispiel $F(x) = x$ (Lineare Verteilung) und $n$ die Anzahl Werte und $j$ der entsprechender sortierte Eintrag ist.
 \begin{center}
 	\begin{tabular}{l|r|r|r}
-		$j$ & $x_j$ & $\frac{i}{n}-F(x_j)$ & $F(x_j) - \frac{i-1}{n}$ \\ \toprule
+		$j$ & $x_j$ & $\frac{j}{n}-F(x_j)$ & $F(x_j) - \frac{j-1}{n}$ \\ \toprule
 		1 & 0.00040 & 0.110 & 0.0004  \\  \midrule
 		2& 0.00398 & 0.218 & -0.1071 \\  \midrule
-		$\vdots$ & $\vdots$& &  \\  \midrule
+		$\vdots$ & $\vdots$& $\vdots$& $\vdots$ \\  \midrule
 		i & 0.43987 & 0.560 &-0.4490 \\ \bottomrule
 		& & $\max_1(\dots)$ & $\max_2(\dots)$
 	\end{tabular}
 \end{center}
 
-Damit ist $\max_1 = 0.61222$ und  $\max_1 = 0.00040$ damit lassen sich die $K$ Werte bestimmen:
+Damit ist $\max_1 = 0.61222$ und  $\max_2 = 0.00040$ damit lassen sich die $K$ Werte bestimmen:
 
 \[
 K_n^+ = \sqrt{n}\cdot \max_1 = 1.83666 \qquad K_n^- = \sqrt{n}\cdot \max_2 = 0.00120
